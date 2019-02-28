@@ -1,0 +1,20 @@
+
+
+<title>to-do list</title>
+<h1>make your to-do list:</h1>
+
+<ul>
+    {% for todo_item in all_items %}
+        <li>{{ todo_item.content }}
+          <form action="/deleteTodo/{{todo_item.id}}" method="post">{% csrf_token %}
+              <input type="submit" value="Completed"/>
+          </form>
+        </li>
+
+    {% endfor %}
+</ul>
+
+<form action="/addtodo/" method="post">{% csrf_token %}
+    <input type="text" name="content" />
+    <input type="submit" value="Add Task"/>
+</form>
